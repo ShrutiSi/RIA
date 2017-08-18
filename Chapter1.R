@@ -14,3 +14,17 @@ getwd()
 ls()
 options(2)
 options()
+options(digit=2)
+x=runif(20)
+x
+options(digits=2)
+x=runif(20)
+x
+summary(x)
+hist(x)
+library()
+search()
+R.home()
+.libPaths()
+
+vec1=c(1,4,6,8,10)

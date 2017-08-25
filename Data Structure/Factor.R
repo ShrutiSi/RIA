@@ -77,3 +77,4 @@ fstatus2
 fstatus3=factor(status,ordered = T,levels=c('Poor','Improved','Excellent'))
 fstatus3
 plot(fstatus3)
+plot(table(fstatus3))

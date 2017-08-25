@@ -18,13 +18,20 @@ options(digit=2)
 x=runif(20)
 x
 options(digits=2)
+
+x1=rnorm(5)
+x1
 x=runif(20)
 x
 summary(x)
 hist(x)
+help.search("vector")
 library()
 search()
 R.home()
 .libPaths()
 
 vec1=c(1,4,6,8,10)
+options()
+options(digits=3)
+search()

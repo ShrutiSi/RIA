@@ -33,3 +33,10 @@ marks.cut
 marks.cut=table(marks.cut)
 marks.cut
 cbind(marks.cut)
+table(m)
+cbind(table(m))
+colnames(m)="marks"
+`colnames-`("marks")
+?colnames
+
+

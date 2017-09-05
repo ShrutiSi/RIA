@@ -74,3 +74,10 @@ a
 table(a)
 sort(table(a), decreasing = TRUE)
 sort(table(a), increasing = FALSE)
+
+x=c(1:12,1,5,5)
+x
+table(x)
+names(table(x))
+sort(table(x), dec= T)
+names(sort(table(x), dec= T))[1]

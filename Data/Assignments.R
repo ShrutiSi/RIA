@@ -91,3 +91,4 @@ cat("Total Decoration Expense -", sum(Bills[1,]))
 cat("Total Food Expense -", sum(Bills[2,]))
 cat("Male among Guest -", Hosts[,4])
 
+# Remaining question will be submitted tom

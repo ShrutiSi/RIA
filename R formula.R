@@ -63,3 +63,56 @@ as.character(head(classinterval2))
 head(x, n=5)
 length(bks)
 table(classinterval2)
+
+# TO change the graph parameters
+par() # to get the c0mplete list of parameters
+par(pin=c(2,3)) # to change the width and height of the graph
+par(col.lab = "red") # to change the color of the label
+hist(mtcars$mpg)   
+par(no.readonly = T) # this command will list all the parameters that can be changed
+opar = par(no.readonly = T)
+opar
+par(opar) # to revert back to default setting
+hist(mtcars$mpg)
+par('mar') # default values to set margin
+par(mar = c(0.5,0.5,0.5,0.5)) # to change margin in cms
+par('mar')
+hist(mtcars$mpg)
+par(mai =c(1,1,1,1)) # to change the margin value in inches
+Par('mai')
+hist(mtcars$mpg)
+attach(mtcars)
+par(mfrow=c(2,2)) # to plot multiple frames per row, plot multiple graph in one frame
+hist(mpg,main= "1")
+hist(cyl,main= "2")
+hist(wt,main="3")
+hist(hp,main="4")
+
+par(mfcol=c(2,2)) # to plot it column wise
+hist(mpg,main= "1")
+hist(cyl,main= "2")
+hist(wt,main="3")
+hist(hp,main="4")
+
+layout((matrix(c(1,1,2,3),byrow=T,nrow=2))) # to plot one graph in the first row and multiple in second row. Repeat "1" number of times as many graph u want in second row 
+hist(mpg,main= "1")
+hist(cyl,main= "2")
+hist(wt,main="3")
+# Horizontal proportion 1:3 and Vertical proportion is 1:2, to change th proportion u add following command
+layout((matrix(c(1,1,2,3),byrow=T,nrow=2)),widths=c(1,3),heights=c(1,2))
+hist(mpg,main= "1")
+hist(cyl,main= "2")
+hist(wt,main="3")
+hist(hp,main="4")
+par(opar)
+plot.new()
+#Redisgn the frame by the use of Figure command
+par(fig=c(0, 0.8,0,0.8),new=T) # add a box plot above the scatter plot
+plot(wt,mpg)
+par(fig=c(0, 0.8,0.65,1),new=T)
+boxplot(wt,horizontal =T,axes=T)
+par(fig=c(0.65,1,0,0.8),new=T)
+boxplot(mpg,axes=F)
+
+#11/09/2017
+

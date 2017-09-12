@@ -78,17 +78,40 @@ colMeans(Player)
 #4
 Guests = c("Achal", "Apoorva", "Lalit", "Goldie")
 Guests
-Hosts = matrix(c("BSc","Animation", "LLB", "Law", "MSc", "DS",50,40,10,20,16,4,24,19,5), nrow = 3)
-colnames(Hosts) = c("Course", "School", "No.", "Male", "Female")
+course = c("BSc","Animation", "LLB")
+Class = c("Law", "MSc", "DS")
+Number = c(50,20,24)
+Male = c(4,16,19)
+Female = c(10,4,5)
+Hosts = data.frame(course,Class,Number,Male,Female)
 Hosts
-rownames(Hosts) =c(1,2,3)
-Bills = matrix(c(100,500,300,200,400,150,500,400,230,700), nrow=2)
+Decoration = c(100,300,400,500,230)
+Food = c(500,200,150,400,700)
+Bills = data.frame(cbind(Decoration,Food))
 Bills
-colnames(Bills)= c("B1","B2", "B3", "B4","B5")
-rownames(Bills) = c("Decoration", "Food")
+rownames(Bills)= c("B1","B2", "B3", "B4","B5")
 Bills
-cat("Total Decoration Expense -", sum(Bills[1,]))
-cat("Total Food Expense -", sum(Bills[2,]))
+cat("Total Decoration Expense -", sum(Bills[,1]))
+cat("Total Food Expense -", sum(Bills[,2]))
 cat("Male among Guest -", Hosts[,4])
+cat("Female among Guest-", Hosts[,5])
 
-# Remaining question will be submitted tom
+# 5
+set.seed(1234)
+Amount1 = ceiling(runif(15, min =1000, max = 2000))
+Amount1
+Amount2 = ceiling(runif(15, min =1000, max = 2000))
+Amount2
+DS = matrix(Amount1,nrow =5)
+DS
+rownames(DS)= c("S1","S2","S3","S4","S5")
+colnames(DS) = c("Graduate", "PG", "Diploma")
+DS
+Law = matrix(Amount2, nrow =5)
+rownames(Law)= c("S1","S2","S3","S4","S5")
+colnames(Law) = c("Graduate", "PG", "Diploma")
+Law
+DS[5,2]
+Law[1,3]
+avgmarks=round(cbind(colMeans(DS),colMeans(Law)))
+avgmarks

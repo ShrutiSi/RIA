@@ -115,3 +115,9 @@ DS[5,2]
 Law[1,3]
 avgmarks=round(cbind(colMeans(DS),colMeans(Law)))
 avgmarks
+Studentcourse = cbind(rowSums(DS),rowSums(Law))
+Studentcourse
+colnames(Studentcourse)= c("DS", "Law")
+Studentcourse
+StudentSum = c(rowSums(DS)+rowSums(Law))
+StudentSum

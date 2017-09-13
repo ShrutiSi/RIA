@@ -35,5 +35,12 @@ difftime(Sys.Date(), df2$dob, unit = 'weeks')
 (df2$age = ceiling(as.numeric(difftime(Sys.Date(), df2$dob, unit = 'weeks'))/52.25))
 head(df2$age)
 str(df2)
+#Filter
 df2[df2$age>30,][1:2] # filter the data, find all students whose age is more than 30
 df2[df2$gender == 'M' & df2$course == 'PGDDS', ][1:2]
+
+# 13-09-2017
+# How to save the csv file once data is cleaned and processed. ie File export, Save data
+summary(df2)
+write.csv(x=df2, file = './data/Shruti.csv') # save to csv
+?write.csv

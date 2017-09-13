@@ -114,5 +114,24 @@ boxplot(wt,horizontal =T,axes=T)
 par(fig=c(0.65,1,0,0.8),new=T)
 boxplot(mpg,axes=F)
 
-#11/09/2017
+#13/09/2017
+#To store only one Dataframe in a file, we use RDS: filename.RDS
+# where as for storing multiple datastructure we use RData: Filename.RData
+# When we save file in csv, we loose all the data structure features, to retain that we can save 
+#it in .RDS or .RData
+
+# Filter-----------
+df2[df2$gender =="M" & df2$course == 'PGDDS', c('rollno', 'name')]
+df2[df2$gender == 'M' & df2$course == 'PGDDS', c(1,2)]
+
+# Find from Indices---------
+df2[df2$hostel == TRUE,][1:2] #stay in hostel
+which(df2$hostel == T) #using which command Tells indices
+df2[which(df2$hostel ==T),][c(1,2,4,5)] # in hostel
+df2[which(!df2$hostel ==T),][c(1,2,4,5)] # not in hostel
+
+#sort x=c(1,2,3,4)
+#sort(x) = 1 2 3 4 sort the data
+#order(x) = 1 5 3 4 2 , gives the order number or position; index
+#rank(x) = give ranks like 1st 2nd 3rd etc
 

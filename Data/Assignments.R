@@ -97,27 +97,36 @@ cat("Male among Guest -", Hosts[,4])
 cat("Female among Guest-", Hosts[,5])
 
 # 5
+School = c("DS", "Law")
+Class = c("Graduate", "PG", "Diploma")
+Student = c("S1","S2","S3","S4","S5") 
 set.seed(1234)
-Amount1 = ceiling(runif(15, min =1000, max = 2000))
-Amount1
-Amount2 = ceiling(runif(15, min =1000, max = 2000))
-Amount2
-DS = matrix(Amount1,nrow =5)
-DS
-rownames(DS)= c("S1","S2","S3","S4","S5")
-colnames(DS) = c("Graduate", "PG", "Diploma")
-DS
-Law = matrix(Amount2, nrow =5)
-rownames(Law)= c("S1","S2","S3","S4","S5")
-colnames(Law) = c("Graduate", "PG", "Diploma")
-Law
-DS[5,2]
-Law[1,3]
-avgmarks=round(cbind(colMeans(DS),colMeans(Law)))
-avgmarks
-Studentcourse = cbind(rowSums(DS),rowSums(Law))
-Studentcourse
-colnames(Studentcourse)= c("DS", "Law")
-Studentcourse
-StudentSum = c(rowSums(DS)+rowSums(Law))
-StudentSum
+Scholarship = ceiling(runif(2*3*5, min =1000, max = 2000))
+Scholarship
+Scholarshiparray = array(Scholarship,c(5,3,2),dimnames=list(Student,Class,School))
+Scholarshiparray
+Scholarshiparray[5,3,1]
+Scholarshiparray[1,3,2]
+?array
+round(apply(Scholarshiparray,c(3,2),mean))
+apply(Scholarshiparray,c(1),sum)
+round(apply(Scholarshiparray,c(1,2),mean))
+apply(Scholarshiparray,c(2),sum)
+apply(Scholarshiparray,c(3),sum)
+
+#6
+Students= c("S1", "S2", "S3", "S4", "S5")
+Gender=c("M", "F", "M", "M", "F")
+Age= c(23, 22, 21, 25, 22)
+City= c("Delhi", "Noida", "Lucknow", "Delhi", "Noida")
+Cat= c("Gen", "OBC", "Gen", "SCST", "Gen")
+
+College = data.frame(Students, Gender,Age,City,Cat)
+College
+
+table(College$Cat,College$Students)
+table(College$Gender,College$Students)
+newstudents = c("Student1", "Student2", "Student3", "Student4", "Student5")
+College$Students = newstudents
+College
+ 

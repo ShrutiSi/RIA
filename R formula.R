@@ -135,3 +135,28 @@ df2[which(!df2$hostel ==T),][c(1,2,4,5)] # not in hostel
 #order(x) = 1 5 3 4 2 , gives the order number or position; index
 #rank(x) = give ranks like 1st 2nd 3rd etc
 
+df2
+rm(list=ls()) # to remove all the data from environment
+load(file='./data/shruti1.RData')
+
+df2
+#16-09-2017
+#Create a function----
+Feestatus = function(x){
+  if(x>=150000)
+    print(paste(i, df2$name[i], x, '- Fee Paid'))
+  else
+    print(paste(i, df2$name[i], x, '- Fee Not Paid -xxxx'))
+}
+for(i in c(1:11)){
+  Feestatus(df2$fees[i])
+}
+# i is for printing the serial number also, u can create function without that also
+
+Feestatus1 = function(x){
+  if(x>=150000)
+    print(paste(df2$name, x, '- Fee Paid'))
+  else
+    print(paste(df2$name, x, '- Fee Not Paid -xxxx'))
+}
+Feestatus1(df2$fees)

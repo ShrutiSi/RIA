@@ -29,3 +29,16 @@ rank(marks, ties.method = 'first') #based on order, it gives rank
 rank(marks, ties.method = 'average') 
 rank(marks, ties.method = 'max')
 rank(marks, ties.method = 'random')
+
+#SOrt dataframe and not just column by age:
+sort(df2$age) 
+df2$name[order(df2$age)] #sort by age; display by name
+df2$name[order(-df2$age)] #sort by descending age
+df2$name[]
+df2[order(df2$age),c("name", "age")] # retrive data from order command and then print name and age accordingly
+df2$name[rev(order(df2$age))] # when u want to reverse the order
+df2[order(df2$hostel,df2$age), c("name", "age", "hostel")] # sort by hostel and age
+df2[order(df2$hostel,-df2$age), c("name", "age", "hostel")] # sort by hostel and rev age
+
+df2
+

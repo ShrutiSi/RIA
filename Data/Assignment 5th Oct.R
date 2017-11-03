@@ -106,9 +106,7 @@ Table3$Rank = round(rank(-Table3$Total, ties.method = 'random'))
 Table3$name[Table3$Rank==5] # Showing Shruti Sinha
 
 #Rowwise & Columnwise means-
-rpgm1 = c(df3$course,df3$rpgm)
-rpgm1
-Table4 <- df3[,c(3,11,12,13,14)]
-Table4
-str(Table4)
-table(Table4)
+
+?aggregate 
+aggregate(df3[c("rpgm", "sql", "excel", "stats")],by = list(df3$course,df3$gender), FUN = sum)
+

@@ -161,4 +161,17 @@ Feestatus1 = function(x){
 }
 Feestatus1(df2$fees)
 
-#19-09-2017
+#20-09-2017
+
+# Missing data
+r = c(1:10)
+r
+mean(r, trim = .2)
+s = c(3,4,5,6,7,8)
+mean(s)
+
+#split wrt course,wrt gender-hostel
+split(df3[1:3],df3$course)#split according to course
+split(df3[1:3],list(df3$gender,df3$hostel))#split wrt gender-hostel
+
+

@@ -75,4 +75,9 @@ library(fBasics)
 skewness(x)
 
 #Descriptive statistics
+#T test
+x1 = c(45,47,50,52,48,47,49,53,51)
+t.test(x1, alternative = "two.sided", mu = 47.5, conf.level = .95)
+qt(p= .95+ .05/2, df = length(x1)-1)
+mean(x1)
 

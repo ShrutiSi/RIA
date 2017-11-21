@@ -1,0 +1,43 @@
+faithful
+summary(faithful)
+str(faithful)
+#Q1
+mean(faithful$eruptions)
+#Q2
+median((faithful$eruptions))
+#Q3
+quantile(faithful$eruptions)
+#Q4
+quantile(faithful$eruptions,c(0.32,0.57,0.98))
+#Q5
+range(faithful$eruptions)
+#Q6
+IQR(faithful$eruptions)
+#Q7 
+sd(faithful$eruptions)
+#Q8
+var(faithful$eruptions)
+#Q9
+library(fBasics)
+skewness(faithful$eruptions)
+#Q10
+kurtosis(faithful$eruptions)
+#Q11
+stem(faithful$eruptions)
+#Q12
+plot(x=faithful$eruptions,y=faithful$waiting)
+scatter.smooth(faithful$eruptions,faithful$waiting)
+# It shows positive relation, as eruptions increases, waiting time also increases
+#Q13
+hist(faithful$eruptions)
+#Q14
+boxplot(faithful$eruptions)
+#Q15
+InsectSprays
+boxplot(InsectSprays$count~InsectSprays$spray)
+#Q16
+cov(faithful$eruptions,faithful$waiting)
+#Both are positivelt related
+#Q17
+cor(faithful$eruptions,faithful$waiting)
+#Both eruption and waiting time are strongly positively correlated with the value of .9 which is very close to 1

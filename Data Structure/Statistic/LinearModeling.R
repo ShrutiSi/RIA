@@ -85,3 +85,58 @@ summary(fit3)
 library(car)
 car::scatterplot(weight~height,data=women,spread=FALSE, lty.smooth=2, pch=19,
                  main= "Women Age 30-39", xlab = "Height", ylab = "Weigth")
+
+#07-11-2017
+?glm
+?state.x77
+class(state.x77)
+head(state.x77)
+states1= as.data.frame(state.x77)
+states = as.data.frame(state.x77[,c('Murder', 'Population', 'Illiteracy', 'Income', 'Frost', 'Area', 'Life Exp')])
+fit1 = lm(Murder~Population+Illiteracy+Income+Frost, data = states)
+fit1
+summary(fit1)
+fit2 = lm(Murder~Population+Illiteracy, data = states)
+fit2
+summary(fit2)
+anova(fit2,fit1)
+fit3 = lm(Murder~., data = states1)
+fit3
+summary(fit3)
+fit4 = lm(Murder~ Population+ `Life Exp`, data = states)
+summary(fit4)
+states$`Life Exp`
+fit5 = lm(Murder~Population+`Life Exp`+Illiteracy, data = states1)
+summary(fit5)
+anova(fit2,fit5)
+# Automatically selecting the best model using step method - IMPORTANT
+fit6= lm(Murder~1, data = states1)
+fit3 = lm(Murder~., data = states1)
+step(fit6,scope = list(lower= fit6, upper = fit3), direction = "forward")
+ Finalfit = lm(formula = Murder ~ `Life Exp` + Frost + Population + Area + 
+                 Illiteracy, data = states1)
+summary(Finalfit)
+AIC(Finalfit,fit5)
+
+#09112017
+women
+fit8 = lm(weight~height, data = women)
+summary(fit8)
+predict_weight = predict(fit8)
+predict_weight
+W = fitted(fit8)
+W
+R = residuals(fit8)
+R
+Women1 = round(cbind(h=women$height,w = women$weight,W,R),2)
+Women1
+head(women)
+names(women)
+df = women
+colnames(df)= c('h','w')
+df
+plot(x= women$height, y= women$weight)
+abline(fit8)
+plot(fit8)
+
+?glm

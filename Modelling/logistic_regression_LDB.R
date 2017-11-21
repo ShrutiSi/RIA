@@ -1,9 +1,10 @@
 # Logistic Regression
 
 # Importing the dataset
+setwd("C:/Users/sangi/Desktop/MUIT Course/Resources/Trevor Hastie Course/Lecture 6 - Logistic Regression Concluded/")
 dataset = read.csv(file='./Data/Social_Network_Ads.csv')
 dataset = dataset[3:5]
-dataset
+
 # Encoding the target feature as factor
 dataset$Purchased = factor(dataset$Purchased, levels = c(0, 1))
 
@@ -15,31 +16,25 @@ split = sample.split(dataset$Purchased, SplitRatio = 0.75)
 training_set = subset(dataset, split == TRUE)
 test_set = subset(dataset, split == FALSE)
 
-# Feature Scaling, sets the mean of all value to 0, 
-#or set the data as normally distributed
-training_set[-3] = scale(training_set[-3])
-test_set[-3] = scale(test_set[-3])
-test_set
-# Fitting Logistic Regression to the Training set, glm is the multiclass logistic model
+# Fitting Logistic Regression to the Training set
 classifier = glm(formula = Purchased ~ .,
                  family = binomial,
                  data = training_set)
-summary(classifier)
-# Predicting the Test set results
-(prob_pred = predict(classifier, type = 'response', newdata = test_set[-3]))
-(y_pred = ifelse(prob_pred > 0.5, 1, 0))
-test_set
-test_set$Purc_Pred = y_pred
 
-# Making the Confusion Matrix, this will tell in how many cases there was wrong prediction
+# Predicting the Test set results
+prob_pred = predict(classifier, type = 'response', newdata = test_set[-3])
+(y_pred = ifelse(prob_pred > 0.5, 1, 0))
+
+# Making the Confusion Matrix
 cm = table(test_set[, 3], y_pred)
 cm
+
 # Visualising the Training set results
 # install.packages("ElemStatLearn")
 library(ElemStatLearn)
 set = training_set
-X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
-X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
+X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.10)
+X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 400)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type = 'response', newdata = grid_set)
@@ -53,10 +48,9 @@ points(grid_set, pch = '.', col = ifelse(y_grid == 1, 'springgreen3', 'tomato'))
 points(set, pch = 21, bg = ifelse(set[, 3] == 1, 'green4', 'red3'))
 
 # Visualising the Test set results
-library(ElemStatLearn)
 set = test_set
-X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
-X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
+X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.10)
+X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 400)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type = 'response', newdata = grid_set)
@@ -68,4 +62,5 @@ plot(set[, -3],
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
 points(grid_set, pch = '.', col = ifelse(y_grid == 1, 'springgreen3', 'tomato'))
 points(set, pch = 21, bg = ifelse(set[, 3] == 1, 'green4', 'red3'))
+
 

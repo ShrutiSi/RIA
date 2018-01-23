@@ -92,6 +92,7 @@ sapply(1:5,function(x)matrix(x,2,2))
 for(i in 1:5){
   matrix(i,2,2)
 }
+
 #mapply
 #multivariate apply. Its purpose is to be able to vectorize arguments to a fu
 

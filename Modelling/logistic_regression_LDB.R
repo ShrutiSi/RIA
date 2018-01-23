@@ -4,7 +4,7 @@
 setwd("C:/Users/sangi/Desktop/MUIT Course/Resources/Trevor Hastie Course/Lecture 6 - Logistic Regression Concluded/")
 dataset = read.csv(file='./Data/Social_Network_Ads.csv')
 dataset = dataset[3:5]
-
+dataset
 # Encoding the target feature as factor
 dataset$Purchased = factor(dataset$Purchased, levels = c(0, 1))
 
@@ -20,7 +20,7 @@ test_set = subset(dataset, split == FALSE)
 classifier = glm(formula = Purchased ~ .,
                  family = binomial,
                  data = training_set)
-
+summary(classifier)
 # Predicting the Test set results
 prob_pred = predict(classifier, type = 'response', newdata = test_set[-3])
 (y_pred = ifelse(prob_pred > 0.5, 1, 0))
